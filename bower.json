@@ -1,0 +1,19 @@
+{
+  "name": "angular-form",
+  "version": "0.0.0",
+  "authors": [
+    "David den Toom <david.den.toom@efocus.nl>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-messages": "~1.4.1",
+    "angular": "~1.4.1"
+  }
+}

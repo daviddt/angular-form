@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myFormApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	
+	<form id="myForm" name="myForm" ng-controller="MyFormCtrl as ctrl" ng-submit="ctrl.submit(data)" ng-init="data = {}">
+		
+		<h1>Enter your username</h1>
+		
+		<div class="input-fields">
+	
+			<label for="username">Username</label>
+			<input id="username" type="text" 
+				ng-model="data.username"
+				placeholder="Enter a username"
+				name="username"
+				maxlength="10"
+				minlength="4"
+				username-available-checker
+				username-first-letter
+				username-first-letterr
+				required>
+			
+			<!-- our validation messages -->
+			<div class="validation">
+				<div ng-messages="myForm.username.$error" role="alert">
+					<span ng-message="username">This username is already taken</span>
+					<span ng-message="minlength">Your username needs to contain at least 4 characters</span>
+					<span ng-message="maxlength">Your username can't contain more than 10 characters</span>
+					<span ng-message="nameNotValid">Your username needs to start with a letter</span>
+				</div>
+				
+				<span class="progress" ng-if="myForm.username.$pending">Checking if username is available</span>
+				<span class="valid" ng-if="myForm.username.$valid">This username is still available!</span>
+			</div>
+		
+		</div>
+		
+		<div class="buttons">
+			
+			<input type="submit" value="verstuur" ng-class="{'js-active': myForm.$valid}" ng-disabled="!myForm.$valid"></input>	
+		
+		</div>
+	</form>
+	
+	
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+	
+	<!-- form -->
+	<script src="js/form/app.js"></script>
+	<script src="js/form/controllers/myFormCtrl.js"></script>
+	<script src="js/form/directives/usernameAvailableChecker.js"></script>
+	<script src="js/form/directives/usernameFirstLetter.js"></script>
+</body>
+</html>
